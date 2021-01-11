@@ -5,6 +5,8 @@ import { AppProps } from './Props';
 import { AppState } from './States';
 import {withRouter} from 'react-router-dom';
 import {getHumans} from './api';
+import {Switch, Route} from 'react-router-dom';
+import Home from './home';
 
 class App extends React.Component<AppProps, AppState> {
 
@@ -12,15 +14,11 @@ class App extends React.Component<AppProps, AppState> {
     human : []
   }
 
-  componentDidMount(){
-    getHumans(this);
-  }
-
   render(){
     return (
-      <div className="App">
-        {this.state.human.map((item,index)=><p>{index}|{item.id}</p>)}
-      </div>
+      <Switch>
+        <Route component={Home}></Route>
+      </Switch>
     );
   }
 }
